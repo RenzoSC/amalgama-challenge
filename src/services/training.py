@@ -15,6 +15,17 @@ class TrainingService:
     
     @staticmethod
     def train_unit(unit: Unit, army: Army, times: int = 1):
+        """
+        Trains a unit in the army
+        
+        :param unit: Unit to be trained
+        :param army: Army to which the unit belongs
+        :param times: Number of times to train the unit (default is 1)
+        
+        :raises UnitNotFoundError: If the unit is not found in the army
+        :raises InvalidAmountError: If the amount of times is not positive or total cost is not positive
+        :raises InsufficientGoldError: If the army does not have enough gold
+        """
         if unit not in army.units:
             raise UnitNotFoundError(f"Unit {unit} not found in the army ({army}) units's array")
         if times <= 0:

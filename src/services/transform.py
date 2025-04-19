@@ -17,6 +17,18 @@ class TransformationService:
     
     @staticmethod
     def transform_unit(unit: Unit, army: Army):
+        """
+        Transforms a unit in the army
+        
+        :param unit: Unit to be transformed
+        :param army: Army to which the unit belongs
+        
+        :raises UnitNotFoundError: If the unit is not found in the army
+        :raises InvalidAmountError: If the amount of gold to spend is not positive
+        :raises InsufficientGoldError: If the army does not have enough gold
+        :raises TypeError: If the unit cannot be transformed
+        :raises DuplicateUnitError: If the new unit is already in the army
+        """
         if unit not in army.units:
             raise UnitNotFoundError("Unit not found in the army units's array")
         

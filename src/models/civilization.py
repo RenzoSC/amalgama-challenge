@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from src.models.units.archer import Archer
 from src.models.units.knight import Knight
 from src.models.units.pikeman import Pikeman
+from src.models.unit import Unit
+from typing import List
 
 @dataclass
 class CivilizationArmyDistribution:
@@ -14,13 +16,19 @@ class CivilizationArmyDistribution:
     knight: int
 
 class Civilization(Enum):
+    """
+    Enum representing different civilizations and their army distributions
+    """
     CHINESE = CivilizationArmyDistribution(2, 25, 2)
     ENGLISH = CivilizationArmyDistribution(10, 10, 10)
     BIZANTINE = CivilizationArmyDistribution(5, 8, 15)
 
-    def create_army(self):
+    def create_army(self) -> List[Unit]:
         """
-        Create an army based on the civilization's army distribution
+        Creates an army based on the civilization's army distribution
+
+        :return: List of units in the army
+        :rtype: List[Unit]
         """
         distribution = self.value
         return (
@@ -29,8 +37,11 @@ class Civilization(Enum):
             [Archer() for _ in range(distribution.archer)]
         )
 
-    def __str__(self):
+    def __str__(self)-> str:
         """
-        Return the name of the civilization
+        Returns the name of the civilization
+        
+        :return: Name of the civilization
+        :rtype: str
         """
         return self.name.capitalize()

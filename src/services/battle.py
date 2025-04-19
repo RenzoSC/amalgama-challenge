@@ -12,7 +12,10 @@ class BattleService():
     @staticmethod
     def fight(attacker:Army, defender: Army):
         """
-        Simulate a battle between two armies.
+        Simulates a battle between two armies
+
+        :param attacker: The attacking army
+        :param defender: The defending army
         """
         attacker_strength = attacker.total_strength
         defender_strength = defender.total_strength
@@ -29,7 +32,13 @@ class BattleService():
     @staticmethod
     def apply_results_one_winner(winner: Army, loser: Army):
         """
-        Apply the results of a battle where one side wins.
+        Applies the result of a battle where one side wins
+
+        :param winner: The winning army
+        :param loser: The losing army
+
+        :raises UnitNotFoundError: If the unit that is to be removed is not found in the army
+        :raises InvalidAmountError: If the amount of gold to add is not positive
         """
         lost = loser.get_n_strongest_units(BattleService.UNITS_LOST_ONE_WINNER)
        
@@ -50,7 +59,12 @@ class BattleService():
     @staticmethod
     def apply_results_draw(attacker: Army, defender: Army):
         """
-        Apply the results of a battle that ends in a draw.
+        Applies the result of a battle that ends in a draw
+
+        :param attacker: The attacking army
+        :param defender: The defending army
+
+        :raises UnitNotFoundError: If the unit that is to be removed is not found in the army
         """
         armies = [attacker, defender]
 
