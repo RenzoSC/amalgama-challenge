@@ -11,9 +11,9 @@ class CivilizationArmyDistribution:
     """
     Distribution of units in a civilization
     """
-    pikeman: int
-    archer: int
-    knight: int
+    pikeman: int = 0
+    archer: int = 0
+    knight: int = 0
 
 class Civilization(Enum):
     """
