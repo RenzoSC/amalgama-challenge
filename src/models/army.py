@@ -112,13 +112,15 @@ class Army:
         sorted_units = sorted(self.__units, key=lambda unit: unit.strength)
         return sorted_units[:amount]
     
-    def get_random_unit(self):
+    def get_random_unit(self)-> Unit | None:
         """
         Gets a random unit from the army
 
-        :return: Random unit
-        :rtype: Unit
+        :return: Random unit or None if the army is empty
+        :rtype: Unit | None
         """
+        if len(self.__units) == 0:
+            return None
         return choice(self.__units)
 
     def record_battle(self, opponent: 'Army', won: bool):
