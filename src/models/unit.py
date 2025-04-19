@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from src.exceptions import InvalidAmountError
+import secrets
 
 class Unit(ABC):
     """
@@ -16,6 +17,7 @@ class Unit(ABC):
         """
         self.__strength = self.default_base_strength
         self.__training_increment = self.default_training_increment
+        self.__id = secrets.token_hex(5)
 
     @property
     @abstractmethod
@@ -55,3 +57,12 @@ class Unit(ABC):
         
         self.__strength += adding
         return self.__strength
+    
+    def __str__(self) -> str:
+        """
+        String representation of the unit
+        
+        :return: String representation of the unit
+        :rtype: str
+        """
+        return f"{self.type_name}-{self.__id}"

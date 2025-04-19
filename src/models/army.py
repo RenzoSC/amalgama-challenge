@@ -3,6 +3,7 @@ from typing import List
 from src.models.unit import Unit
 from src.exceptions import UnitNotFoundError, DuplicateUnitError, InsufficientGoldError, InvalidAmountError
 from random import choice
+import secrets
 
 class Army:
     """
@@ -13,6 +14,7 @@ class Army:
         self.__units: List[Unit] = self.__civilization.create_army()
         self.__gold: int = 1000
         self.__battle_history: List[dict] = []
+        self.__id = secrets.token_hex(5)
 
     @property
     def units(self) -> List[Unit]:
@@ -130,3 +132,12 @@ class Army:
             'opponent': opponent,
             'won': won
         })
+
+    def __str__(self):
+        """
+        String representation of the army
+
+        :return: String representation of the army
+        :rtype: str
+        """
+        return f"{self.__civilization}-{self.__id}"
