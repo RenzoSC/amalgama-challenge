@@ -119,7 +119,7 @@ class Army:
         :return: Random unit or None if the army is empty
         :rtype: Unit | None
         """
-        if len(self.__units) == 0:
+        if not self.__units:
             return None
         return choice(self.__units)
 
