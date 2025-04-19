@@ -2,6 +2,7 @@ from src.models.civilization import Civilization
 from typing import List
 from src.models.unit import Unit
 from src.exceptions import UnitNotFoundError, DuplicateUnitError, InsufficientGoldError, InvalidAmountError
+from random import choice
 
 class Army:
     """
@@ -108,6 +109,15 @@ class Army:
             raise InvalidAmountError("Amount must be positive")
         sorted_units = sorted(self.__units, key=lambda unit: unit.strength)
         return sorted_units[:amount]
+    
+    def get_random_unit(self):
+        """
+        Gets a random unit from the army
+
+        :return: Random unit
+        :rtype: Unit
+        """
+        return choice(self.__units)
 
     def record_battle(self, opponent: 'Army', won: bool):
         """
