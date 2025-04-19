@@ -1,6 +1,6 @@
 from src.models.army import Army
 from src.models.unit import Unit
-from src.settings import PIKEMAN, ARCHER, KNIGHT
+from src.settings import PIKEMAN, ARCHER, KNIGHT, WIZARD
 from src.exceptions import UnitNotFoundError, InvalidAmountError, InsufficientGoldError
 import logging
 
@@ -10,7 +10,8 @@ class TrainingService:
     TRAINING_COSTS = {
         PIKEMAN:  10,
         ARCHER:  20,
-        KNIGHT:  30
+        KNIGHT:  30,
+        WIZARD:  60
     }
     
     @staticmethod

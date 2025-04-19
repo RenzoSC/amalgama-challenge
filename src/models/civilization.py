@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from src.models.units.archer import Archer
 from src.models.units.knight import Knight
 from src.models.units.pikeman import Pikeman
+from src.models.units.wizard import Wizard
 from src.models.unit import Unit
 from typing import List
 
@@ -14,14 +15,15 @@ class CivilizationArmyDistribution:
     pikeman: int
     archer: int
     knight: int
+    wizard: int
 
 class Civilization(Enum):
     """
     Enum representing different civilizations and their army distributions
     """
-    CHINESE = CivilizationArmyDistribution(2, 25, 2)
-    ENGLISH = CivilizationArmyDistribution(10, 10, 10)
-    BIZANTINE = CivilizationArmyDistribution(5, 8, 15)
+    CHINESE = CivilizationArmyDistribution(2, 25, 2, 12)
+    ENGLISH = CivilizationArmyDistribution(10, 10, 10, 7)
+    BIZANTINE = CivilizationArmyDistribution(5, 8, 15, 2)
 
     def create_army(self) -> List[Unit]:
         """
@@ -34,7 +36,8 @@ class Civilization(Enum):
         return (
             [Pikeman() for _ in range(distribution.pikeman)]+
             [Knight() for _ in range(distribution.knight)]+
-            [Archer() for _ in range(distribution.archer)]
+            [Archer() for _ in range(distribution.archer)] +
+            [Wizard() for _ in range(distribution.wizard)]
         )
 
     def __str__(self)-> str:

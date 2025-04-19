@@ -2,7 +2,7 @@ from src.models.army import Army
 from src.models.unit import Unit
 from src.models.units.archer import Archer
 from src.models.units.knight import Knight
-from src.settings import PIKEMAN, ARCHER, KNIGHT
+from src.settings import PIKEMAN, ARCHER, KNIGHT, WIZARD
 from src.exceptions import UnitNotFoundError, InvalidAmountError, InsufficientGoldError, DuplicateUnitError, UnitNotFoundError
 import logging
 
@@ -12,7 +12,8 @@ class TransformationService:
     TRANSFORM_RULES = {
         PIKEMAN: (Archer, 30),
         ARCHER: (Knight, 40),
-        KNIGHT: (None, 0)
+        KNIGHT: (None, 0),
+        WIZARD: (None, 0)
     }
     
     @staticmethod
