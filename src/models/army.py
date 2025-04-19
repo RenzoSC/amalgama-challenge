@@ -135,7 +135,7 @@ class Army:
             'won': won
         })
 
-    def __str__(self):
+    def __str__(self) ->str:
         """
         String representation of the army
 
@@ -143,3 +143,12 @@ class Army:
         :rtype: str
         """
         return f"{self.__civilization}-{self.__id}"
+    
+    def __repr__(self) ->str:
+        """
+        String representation of the army for debugging
+        
+        :return: String representation of the army
+        :rtype: str
+        """
+        return str(self)
