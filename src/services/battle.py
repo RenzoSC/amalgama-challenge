@@ -17,6 +17,8 @@ class BattleService():
         :param attacker: The attacking army
         :param defender: The defending army
         """
+        logger.info(f"Battle between {attacker} and {defender}")
+
         attacker_strength = attacker.total_strength
         defender_strength = defender.total_strength
 
@@ -40,6 +42,8 @@ class BattleService():
         :raises UnitNotFoundError: If the unit that is to be removed is not found in the army
         :raises InvalidAmountError: If the amount of gold to add is not positive
         """
+        logger.info(f"Battle result: {winner} wins against {loser}")
+
         lost = loser.get_n_strongest_units(BattleService.UNITS_LOST_ONE_WINNER)
        
         for u in lost:
@@ -66,6 +70,8 @@ class BattleService():
 
         :raises UnitNotFoundError: If the unit that is to be removed is not found in the army
         """
+        logger.info(f"Battle result: {attacker} and {defender} draw")
+
         armies = [attacker, defender]
 
         for army in armies:

@@ -26,10 +26,12 @@ class TrainingService:
         :raises InvalidAmountError: If the amount of times is not positive or total cost is not positive
         :raises InsufficientGoldError: If the army does not have enough gold
         """
+        logger.info(f"Training unit {unit} in army {army} {times} times")
+
         if unit not in army.units:
             raise UnitNotFoundError(f"Unit {unit} not found in the army ({army}) units's array")
         if times <= 0:
-            raise InvalidAmountError(f"times ({times}) must be positive")
+            raise ValueError(f"times ({times}) must be positive")
 
         cost_per = TrainingService.TRAINING_COSTS[unit.type_name]
         total_cost = cost_per * times
@@ -39,7 +41,7 @@ class TrainingService:
             logger.error(f"Invalid amount ({total_cost}) of gold to spend for training")
             return
         except InsufficientGoldError:
-            logger.error("Not enough gold to train the unit")
+            logger.error(f"Not enough gold ({army.gold} - total_cost {total_cost}) to train the unit ({unit})")
             return
         
         for _ in range(times):

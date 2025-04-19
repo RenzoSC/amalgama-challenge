@@ -29,6 +29,8 @@ class TransformationService:
         :raises TypeError: If the unit cannot be transformed
         :raises DuplicateUnitError: If the new unit is already in the army
         """
+        logger.info(f"Transforming unit {unit} in army {army}")
+        
         if unit not in army.units:
             raise UnitNotFoundError("Unit not found in the army units's array")
         
