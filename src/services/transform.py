@@ -5,11 +5,12 @@ from src.models.units.knight import Knight
 from src.settings import PIKEMAN, ARCHER, KNIGHT
 from src.exceptions import UnitNotFoundError, InvalidAmountError, InsufficientGoldError, DuplicateUnitError, UnitNotFoundError
 import logging
+from typing import Type
 
 logger = logging.getLogger(__name__)
 
 class TransformationService:
-    TRANSFORM_RULES = {
+    TRANSFORM_RULES:dict[str, tuple[Type[Unit] | None, int]] = {
         PIKEMAN: (Archer, 30),
         ARCHER: (Knight, 40),
         KNIGHT: (None, 0)
@@ -40,7 +41,7 @@ class TransformationService:
         
         try:
             army.spend_gold(cost)
-            new_unit = target_type()
+            new_unit = target_type(target_type.default_base_strength + unit.strength)
             army.remove_unit(unit)
             army.add_unit(new_unit)
             return new_unit

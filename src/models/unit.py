@@ -11,11 +11,11 @@ class Unit(ABC):
     default_base_strength: int
     default_training_increment: int
 
-    def __init__(self):
+    def __init__(self, base_strength:int = None):
         """
         Initializes the unit with default base strength and training increment
         """
-        self.__strength = self.default_base_strength
+        self.__strength = base_strength if base_strength and base_strength > 0 else self.default_base_strength 
         self.__training_increment = self.default_training_increment
         self.__id = secrets.token_hex(5)
 

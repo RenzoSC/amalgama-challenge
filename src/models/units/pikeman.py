@@ -7,8 +7,8 @@ class Pikeman(Unit):
     """
     default_base_strength = 5
     default_training_increment = 3
-    def __init__(self):
-        super().__init__()
+    def __init__(self, base_strength: int = None):
+        super().__init__(base_strength)
 
     @property
     def type_name(self) -> str:
