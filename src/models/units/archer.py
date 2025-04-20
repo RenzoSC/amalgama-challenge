@@ -5,8 +5,8 @@ class Archer(Unit):
     """
     Archer unit
     """
-    default_base_strength = 5
-    default_training_increment = 3
+    default_base_strength = 10
+    default_training_increment = 7
     def __init__(self, base_strength: int = None):
         super().__init__(base_strength)
 
