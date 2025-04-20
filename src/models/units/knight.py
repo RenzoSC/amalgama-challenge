@@ -5,8 +5,8 @@ class Knight(Unit):
     """
     Knight unit
     """
-    default_base_strength = 5
-    default_training_increment = 3
+    default_base_strength = 20
+    default_training_increment = 10
 
     def __init__(self):
         super().__init__()
